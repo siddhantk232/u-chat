@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>U-chat</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>U-chat</h1>
+    </header>
+
+    <section>
+        <div id="change_username">
+            <input id="username" type="text" />
+            <button id="send_username" type="button">Change username</button>
+        </div>
+    </section>
+
+    <section id="chatroom">
+
+    </section>
+
+
+
+    <section id="input_zone">
+        <input id="message" class="vertical-align" type="text" />
+        <button id="send_message" class="vertical-align" type="button">Send</button>
+    </section>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:3000');
+
+        const select = (id) => {
+            return document.getElementById(id);
+        }
+
+        const message = select('message');
+        const username = select('username');
+        const send_message = select('send_message');
+        const send_username = select('send_username');
+        const chatroom = select('chatroom');
+
+        send_message.addEventListener('click', () => {
+            socket.emit('new_message', { message: message.value });
+        });
+
+        socket.on('new_message', (data) => {
+            let node = document.createElement("p");
+            node.className = "message";
+            let textnode = document.createTextNode(`${data.username} : ${data.message}`);
+            node.appendChild(textnode);
+            chatroom.appendChild(node);
+        });
+
+        send_username.addEventListener('click', () => {
+            socket.emit('change_username', { username: username.value });
+        });
+    </script>
+</body>
+
+</html>
