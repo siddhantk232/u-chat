@@ -1,10 +1,12 @@
-const express = require("express");
-const exphbs = require("express-handlebars");
-const app = express();
-
-server = app.listen(3000, () => {
-  console.log(`Server started on port 3000 `);
+const http = require("http");
+const server = http.createServer();
+server.listen(3000, () => {
+  console.log("Server started on port 3000");
 });
+
+// server = app.listen(3000, () => {
+//   console.log(`Server started on port 3000 `);
+// });
 
 const io = require("socket.io")(server);
 

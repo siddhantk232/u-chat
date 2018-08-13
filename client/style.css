@@ -1,4 +1,4 @@
-@mixin vertical-align {
+/* @mixin vertical-align {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -39,11 +39,7 @@ div#change_username {
   background-color: #bca9f5;
 }
 
-section#chatroom {
-  border: 5px inset #8258fa;
-  height: 85%;
-  overflow: auto;
-}
+
 
 section#input_zone {
   height: 7%;
@@ -76,13 +72,13 @@ button#send_message {
   height: 70%;
   width: 10%;
 }
-
+*/
 p.message {
   margin: 0px;
   width: 100%;
   height: 40px;
   font-size: 2vh;
-  font-family: "Comfortaa", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 1vh;
 }
 
@@ -92,4 +88,31 @@ p.message {
 
 .message:nth-child(odd) {
   background-color: #81bef7;
+}
+
+section#chatroom {
+  border: 2px solid #8258fa;
+  height: 60vh;
+  overflow: auto;
+}
+
+/* @mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+} */
+p.heading {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
 }
